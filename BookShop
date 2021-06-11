@@ -1,0 +1,145 @@
+#include<iostream>
+#include<string.h>
+#include<cstdlib>
+using namespace std;
+
+class library
+{
+    int stock;
+    float price;
+    char author[20];
+    char title[20];
+    char publisher[20];
+public:
+    	void getdata();
+    	void show();
+    	int search(char [],char []);
+    	void copies(int c);
+};
+
+void library::getdata()
+{
+	cout<<"Enter Title : ";
+	cin>>title;
+	cout<<"Enter Author : ";
+	cin>>author;
+	cout<<"Enter Publisher : ";
+	cin>>publisher;
+	cout<<"Enter Price : ";
+	cin>>price;
+	cout<<"Available Stock : ";
+	cin>>stock;
+}
+
+void library::show()
+{
+
+
+	cout<<title<<"\t\t"<<author<<"\t\t"<<publisher<<"\t\t"<<"\t"<<price<<"\t\t"<<stock<<endl;
+
+}
+void library::copies(int c)
+
+{
+
+	if(c>stock)
+ 		{
+  			cout<<"\n Required Copies of Book are Not available"<<endl;
+
+ 		}
+ 		else
+ 		{
+
+ 			cout<<"\nRequired Copies are Available "<<endl;
+  			cout<<"Total Price Of Your Purchase is "<<c*price<<" INR"<<endl;
+  			stock=stock-c;
+ 		}
+
+
+}
+
+int main()
+{
+	int n,c,i;
+	int ch;
+	int stock;
+	float price;
+	char author[20],title[20];
+	char a[20],t[20];
+	library l[50];
+	do
+	{
+	    cout<<"*************************BOOK SHOP MANAGEMENT****************************************";
+		cout<<"\n1.Enter Book Details\n2.Display Book Record\n3.Search a book\n4.Exit"<<endl;
+		cout<<"=========================*****************************================================";
+		cout<<"\nEnter Your Choice :";
+		cin>>ch;
+
+	switch(ch)
+	{
+		case 1:
+			cout<<"Enter the number of Books: ";
+			cin>>n;
+
+
+			for (int i=0;i<n;i++)
+			{
+			l[i].getdata();
+			}
+
+		break;
+
+		case 2:
+				cout<<"Title"<<"\t\t"<<"Author"<<"\t\t"<<"Publisher"<<"\t\t"<<"Price"<<"\t\t"<<"Stock"<<endl;
+				for (int i=0;i<n;i++)
+				{
+						l[i].show();
+				}
+				cout<<"\t";
+
+		break;
+
+		case 3:
+			cout<<"\nEnter the name of the author: ";
+    		cin>>a;
+    		cout<<"\nEnter the title of the book: ";
+    		cin>>t;
+
+    		if(strcmp(author,a) && strcmp(title,t))
+ 			{
+  				cout<<"Book Available"<<endl;
+  				cout<<"Title"<<"\t\t"<<"Author"<<"\t\t"<<"Publisher"<<"\t\t"<<"Price"<<"\t\t"<<"Stock"<<endl;
+  				l[i].show();
+  				cout<<"Enter the Number of Copies :"<<endl ;
+  				cin>>c;
+  				l[i].copies(c);
+
+  			}
+		 else
+ 			{
+ 				cout<<"Book is Not Available"<<endl;
+ 			}
+
+			break;
+
+
+    	case 4:
+				exit(0);
+
+
+			default: cout<<"\nEnter Valid Choice!!!";
+	}
+} while(ch!=4);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
